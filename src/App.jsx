@@ -4,7 +4,7 @@ import useCurrencyInfo from './hooks/useCurrencyInfo'
 
 
 function App() {
-  const [amount, setAmount] =useState(0)
+  const [amount, setAmount] =useState("")
   const [from, setFrom] = useState("usd")
   const [to, setTo] = useState("inr")
   const [convertedAmount, setConvertedAmount]=useState(0)
@@ -14,13 +14,13 @@ function App() {
   const options=Object.keys(currencyInfo)
   const swap=()=>{
     setFrom(to)
-    setFrom(from)
+    setTo(from)
     setConvertedAmount(amount)
     setAmount(convertedAmount)
   }
 
   const convert=()=>{
-    setConvertedAmount(amount * currencyInfo[to])
+    setConvertedAmount(Number(amount) * currencyInfo[to])
 
   }
 
@@ -28,7 +28,7 @@ function App() {
         <div
             className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
             style={{
-                backgroundImage: `url('https://imgs.search.brave.com/NdZSwnvlwOBlAUxS7dP1tm1KFn1TrEEontIvSDz2S5E/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wbmcu/cG5ndHJlZS5jb20v/dGh1bWJfYmFjay9m/aDI2MC9iYWNrZ3Jv/dW5kLzIwMjIwNjEw/L3BuZ3RyZWUtc3Rv/Y2stZXhjaGFuZ2Ut/YW5kLW1vbmV5LW1v/bmV5LWZpbmFuY2Ut/Y3VycmVuY3ktcGhv/dG8taW1hZ2VfMzEz/MDA3MDguanBn')`,
+                backgroundImage: `url('https://images.pexels.com/photos/35404568/pexels-photo-35404568.jpeg')`,
             }}
         >
             <div className="w-full">
@@ -45,7 +45,7 @@ function App() {
                                 label="From"
                                 amount={amount}
                                 currencyOptions={options}
-                                onCurrencyChange={(currency)=>setAmount(amount)}
+                                onCurrencyChange={(currency)=>setFrom(currency)}
                                 selectCurrency={from}
                                 onAmountChange={(amount)=> setAmount(amount)}
                                 
